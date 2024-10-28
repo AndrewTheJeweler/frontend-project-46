@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1730039102146" clover="3.2.0">
-  <project timestamp="1730039102146" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1730146226789" clover="3.2.0">
+  <project timestamp="1730146226790" name="All files">
+    <metrics statements="41" coveredstatements="38" conditionals="14" coveredconditionals="11" methods="10" coveredmethods="10" elements="65" coveredelements="59" complexity="0" loc="41" ncloc="41" packages="1" files="4" classes="4"/>
+    <file name="buildObject.js" path="/home/andrewthejeweler/Рабочий стол/project/frontend-project-46/src/buildObject.js">
+      <metrics statements="15" coveredstatements="15" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="13" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="15" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+    </file>
+    <file name="index.js" path="/home/andrewthejeweler/Рабочий стол/project/frontend-project-46/src/index.js">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <line num="8" count="2" type="stmt"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+    </file>
+    <file name="parser.js" path="/home/andrewthejeweler/Рабочий стол/project/frontend-project-46/src/parser.js">
+      <metrics statements="6" coveredstatements="3" conditionals="4" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="2" type="cond" truecount="1" falsecount="3"/>
+      <line num="6" count="2" type="stmt"/>
+      <line num="8" count="0" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="12" count="0" type="stmt"/>
+    </file>
+    <file name="toString.js" path="/home/andrewthejeweler/Рабочий стол/project/frontend-project-46/src/toString.js">
+      <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <line num="3" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="4" count="2" type="stmt"/>
+      <line num="5" count="14" type="cond" truecount="2" falsecount="0"/>
+      <line num="6" count="12" type="stmt"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="10" count="12" type="stmt"/>
+      <line num="11" count="12" type="stmt"/>
+      <line num="12" count="12" type="stmt"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="19" count="2" type="stmt"/>
+    </file>
   </project>
 </coverage>
