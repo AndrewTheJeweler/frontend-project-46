@@ -17,4 +17,4 @@ test:
 	npx jest
 
 test-coverage:
-	npx jest --coverage
+	npx jest --bail --coverage --coverageProvider=v8
