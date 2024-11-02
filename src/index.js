@@ -13,7 +13,7 @@ const genDiff = (filePath1, filePath2) => {
   const file1Obj = toParse(readFile(filePath1), getFormat(filePath1));
   const file2Obj = toParse(readFile(filePath2), getFormat(filePath2));
   const result = buildObject(file1Obj, file2Obj);
-  return stringify(result, '  ', 1);
+  return stringify(result);
 };
 
 export default genDiff;

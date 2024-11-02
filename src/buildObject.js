@@ -1,26 +1,33 @@
 import _ from 'lodash';
 
 const buildObject = (object1, object2) => {
-  const object1Key = Object.keys(object1);
-  const object2Key = Object.keys(object2);
-  const keys = _.sortBy(_.union(object1Key, object2Key));
-  const result = {};
+  const iter = (data1, data2) => {
+    const result = {};
+    const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
 
-  // eslint-disable-next-line array-callback-return
-  keys.map((key) => {
-    if (!Object.hasOwn(object1, key)) {
-      result[`+ ${key}`] = object2[key];
-    } else if (!Object.hasOwn(object2, key)) {
-      result[`- ${key}`] = object1[key];
-    } else if (object1[key] !== object2[key]) {
-      result[`- ${key}`] = object1[key];
-      result[`+ ${key}`] = object2[key];
-    } else {
-      result[`  ${key}`] = object1[key];
-    }
-  });
+    keys.forEach((key) => {
+      const value1 = data1[key];
+      const value2 = data2[key];
 
-  return result;
+      if (_.isObject(value1) && _.isObject(value2)) {
+        result[`  ${key}`] = iter(value1, value2);
+      } else if (value1 !== value2) {
+        if (!Object.hasOwn(data1, key)) {
+          result[`+ ${key}`] = value2;
+        } else if (!Object.hasOwn(data2, key)) {
+          result[`- ${key}`] = value1;
+        } else {
+          result[`- ${key}`] = value1;
+          result[`+ ${key}`] = value2;
+        }
+      } else {
+        result[`  ${key}`] = value1;
+      }
+    });
+    return result;
+  };
+
+  return iter(object1, object2);
 };
 
 export default buildObject;
