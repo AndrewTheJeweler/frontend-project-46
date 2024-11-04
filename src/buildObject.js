@@ -1,33 +1,45 @@
 import _ from 'lodash';
 
-const buildObject = (object1, object2) => {
-  const iter = (data1, data2) => {
-    const result = {};
-    const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
+const buildTree = (data1, data2) => {
+  const sortKeys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
+  const result = sortKeys.map((key) => {
+    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+      return {
+        type: 'nested',
+        key,
+        children: buildTree(data1[key], data2[key]),
+      };
+    }
+    if (!_.has(data1, key)) {
+      return {
+        type: 'added',
+        key,
+        value: data2[key],
+      };
+    }
+    if (!_.has(data2, key)) {
+      return {
+        type: 'deleted',
+        key,
+        value: data1[key],
+      };
+    }
+    if (!_.isEqual(data1[key], data2[key])) {
+      return {
+        type: 'changed',
+        key,
+        value1: data1[key],
+        value2: data2[key],
+      };
+    }
+    return {
+      type: 'unchanged',
+      key,
+      value: data1[key],
+    };
+  });
 
-    keys.forEach((key) => {
-      const value1 = data1[key];
-      const value2 = data2[key];
-
-      if (_.isObject(value1) && _.isObject(value2)) {
-        result[`  ${key}`] = iter(value1, value2);
-      } else if (value1 !== value2) {
-        if (!Object.hasOwn(data1, key)) {
-          result[`+ ${key}`] = value2;
-        } else if (!Object.hasOwn(data2, key)) {
-          result[`- ${key}`] = value1;
-        } else {
-          result[`- ${key}`] = value1;
-          result[`+ ${key}`] = value2;
-        }
-      } else {
-        result[`  ${key}`] = value1;
-      }
-    });
-    return result;
-  };
-
-  return iter(object1, object2);
+  return result;
 };
 
-export default buildObject;
+export default buildTree;
