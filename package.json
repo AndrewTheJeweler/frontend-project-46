@@ -10,6 +10,10 @@
   "scripts": {
     "test": "jest"
   },
+  "jest": {
+     "coverageDirectory": "coverage",
+     "coverageReporters": ["lcov", "text"]
+   },
   "author": "",
   "license": "ISC",
   "dependencies": {
