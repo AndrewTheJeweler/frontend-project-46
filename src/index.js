@@ -3,7 +3,7 @@ import path from 'path';
 import process from 'process';
 import toParse from './parser.js';
 import buildTree from './buildObject.js';
-import formatting from './formats/index.js';
+import formatting from './formatters/index.js';
 
 const getAbsolutePath = (filePath) => path.resolve(process.cwd(), '__fixtures__', filePath);
 const readFile = (filePath) => fs.readFileSync(getAbsolutePath(filePath), 'utf-8');
