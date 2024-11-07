@@ -28,7 +28,7 @@ const stylish = (data) => {
         case 'unchanged':
           return `${genIndent(depth)}  ${item.key}: ${stringify(item.value, depth)}`;
         default:
-          throw new Error('');
+          throw new Error(`Unknown type: ${item.type}`);
       }
     });
     return result.join('\n');
