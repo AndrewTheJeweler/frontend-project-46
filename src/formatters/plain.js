@@ -25,12 +25,12 @@ const plain = (data) => {
         case 'changed':
           return `Property '${newKeys.join('.')}' was updated. From ${stringify(item.value1)} to ${stringify(item.value2)}`;
         case 'unchanged':
-          return 'unchanged';
+          return null;
         default:
           throw new Error(`Unknown type: ${item.type}`);
       }
     });
-    return result.filter((line) => line !== 'unchanged').join('\n');
+    return result.filter((line) => line !== null).join('\n');
   };
 
   return iter(data, []);

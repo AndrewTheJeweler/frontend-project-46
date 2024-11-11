@@ -11,9 +11,9 @@ const readFile = (filePath) => fs.readFileSync(getAbsolutePath(filePath), 'utf-8
 const getFormat = (filePath) => _.last(filePath.split('.'));
 
 const genDiff = (filePath1, filePath2, format = 'stylish') => {
-  const file1Obj = toParse(readFile(filePath1), getFormat(filePath1));
-  const file2Obj = toParse(readFile(filePath2), getFormat(filePath2));
-  const result = buildTree(file1Obj, file2Obj);
+  const data1 = toParse(readFile(filePath1), getFormat(filePath1));
+  const data2 = toParse(readFile(filePath2), getFormat(filePath2));
+  const result = buildTree(data1, data2);
   return formatting(result, format);
 };
 

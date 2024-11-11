@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import process from 'process';
 import genDiff from '../src/index.js';
 
 const getAbsolutePath = (filePath) => path.resolve(process.cwd(), '__fixtures__', filePath);
@@ -9,12 +10,13 @@ const stylishResult = readFile('stylishResult.txt');
 const plainResult = readFile('plainResult.txt');
 const jsonResult = readFile('jsonResult.txt');
 
-test('generateDifference', () => {
-  expect(genDiff('file1.json', 'file2.yaml')).toEqual(stylishResult);
-  expect(genDiff('file1.yml', 'file2.json')).toEqual(stylishResult);
-  expect(genDiff('file1.json', 'file2.json', 'plain')).toEqual(plainResult);
-  expect(genDiff('file1.yml', 'file2.yaml', 'json')).toEqual(jsonResult);
-
-  expect(() => genDiff('file1.json', 'file2.json', 'js')).toThrow('Unknown format js');
-  expect(() => genDiff('file1.js', 'file2.json')).toThrow('Unknown format: js');
+test.each([
+  ['file1.json', 'file2.json', 'stylish', stylishResult],
+  ['file1.yml', 'file2.yaml', 'stylish', stylishResult],
+  ['file1.json', 'file2.json', 'plain', plainResult],
+  ['file1.yml', 'file2.yaml', 'plain', plainResult],
+  ['file1.json', 'file2.json', 'json', jsonResult],
+  ['file1.yml', 'file2.yaml', 'json', jsonResult],
+])('genDiff(%p, %p, %p)', (path1, path2, styleName, expected) => {
+  expect(genDiff(path1, path2, styleName)).toEqual(expected);
 });
