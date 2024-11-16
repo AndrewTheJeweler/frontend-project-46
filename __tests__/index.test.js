@@ -17,6 +17,7 @@ test.each([
   ['file1.yml', 'file2.yaml', 'plain', plainResult],
   ['file1.json', 'file2.json', 'json', jsonResult],
   ['file1.yml', 'file2.yaml', 'json', jsonResult],
+  ['file1.json', 'file2.json', undefined, stylishResult],
 ])('genDiff(%p, %p, %p)', (path1, path2, styleName, expected) => {
   expect(genDiff(path1, path2, styleName)).toEqual(expected);
 });
